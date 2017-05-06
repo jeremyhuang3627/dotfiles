@@ -27,7 +27,10 @@ Plug 'rking/ag.vim'
 Plug 'janko-m/vim-test'
 Plug 'szw/vim-tags'
 Plug 'flazz/vim-colorschemes'
-Plug 'artur-shaik/vim-javacomplete2'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Language specific plugins
 Plug 'tpope/vim-rails',         { 'for' : 'ruby' }
@@ -48,7 +51,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nnoremap <LocalLeader>m :call NerdTreeToggle()<CR>
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize = 30
 
 " Smart Toggle
 function! NerdTreeToggle()
@@ -70,7 +73,7 @@ nmap <LocalLeader>g :TagsGenerate!<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <C-p> :FZF -m<CR>
+nma <C-p> :FZF -m<CR>
 nmap <LocalLeader>a :FzfAg<Space>
 nmap <LocalLeader>t :Ag!<Space>
 nmap <LocalLeader>aq :Ag! -Q<Space>
@@ -93,19 +96,6 @@ imap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "<S-Tab>"
 let g:ag_working_path_mode="r"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-" javacomplete2
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -122,6 +112,10 @@ if index(g:kill_whitespace_blacklist, &ft) < 0
   au BufWritePre * :call <SID>StripTrailingWhitespaces()
 endif
 
+" show tabs as >
+
+set list
+
 " Neovim workaround for C-h
 if has('nvim')
   nnoremap <BS> <C-W>h
@@ -135,24 +129,31 @@ set clipboard=unnamed
 set fileformats=unix
 set ff=unix
 
-colors zenburn
-syntax on
+" colors zenburn
+syntax enable
+set background=dark
+" set background=light
+colorscheme solarized
+
 filetype plugin indent on
 set number
 set hlsearch
 set shiftwidth=1
 set tabstop=2
 set expandtab
+set ignorecase
 let g:CommandTMaxFiles=2000000
 let g:CommandTFileScanner="find"
 let g:CommandTTraverseSCM="file"
 let g:CommandTMaxCachedDirectories = 10
+
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 noremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>nv :vsplit `echo $HOME/notes.txt`<cr>
 inoremap jk <esc>
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
