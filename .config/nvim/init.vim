@@ -66,6 +66,15 @@ let g:NERDTreeMapOpenVSplit='<C-v>'
 let g:NERDTreeMapOpenSplit='<C-s>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
+" easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <LocalLeader>g :TagsGenerate!<CR>
