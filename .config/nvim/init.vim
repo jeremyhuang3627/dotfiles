@@ -31,6 +31,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
 " Language specific plugins
 Plug 'tpope/vim-rails',         { 'for' : 'ruby' }
@@ -64,6 +67,13 @@ endfunction
 
 let g:NERDTreeMapOpenVSplit='<C-v>'
 let g:NERDTreeMapOpenSplit='<C-s>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" insearch
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
