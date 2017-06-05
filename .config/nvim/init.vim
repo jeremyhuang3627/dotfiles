@@ -150,8 +150,8 @@ set ff=unix
 
 " colors zenburn
 syntax enable
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 colorscheme solarized
 
 filetype plugin indent on
